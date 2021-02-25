@@ -1,0 +1,448 @@
+/* ==UserStyle==
+@name         Better Bitbucket
+@version      0.0.1
+@description  Less sucky version of Bitbucket Server
+@namespace    github.com/YongJieYongJie/betterbitbucket
+@author       YongJieYongJie
+@homepageURL  https://github.com/YongJieYongJie/betterbitbucket
+@supportURL   https://github.com/YongJieYongJie/betterbitbucket/issues
+@updateURL    https://github.com/YongJieYongJie/betterbitbucket/raw/master/betterbitbucket.user.css
+@license      MIT
+==/UserStyle== */
+@-moz-document regexp("https://bitbucket.\\w+.co/.+/pull-requests/.*/diff.*") {
+
+    /* Unified view - bottom whiteness */
+    .full-window-scrolling .skipped-container[data-below=false] {
+        background: #202020;
+    }
+
+    /* clickable area to show more of the source code
+    patterned background copied from https://www.magicpattern.design/tools/css-backgrounds/ */
+    .skipped-container .content-above,
+    .skipped-container .content-below {
+        background-color: #202020;
+        opacity: 1;
+        background: radial-gradient(circle, transparent 20%, #202020 20%, #202020 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #202020 20%, #202020 80%, transparent 80%, transparent) 10px 10px, linear-gradient(#525252 0.8px, transparent 0.8px) 0 -0.4px, linear-gradient(90deg, #525252 0.8px, #202020 0.8px) -0.4px 0;
+        background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
+    }
+
+    .aui-button,
+    a.aui-button,
+    .aui-button:visited {
+        transition: none;
+    }
+
+    /* file browser - selected file */
+    .jstree .jstree-clicked {
+        border: 1px solid rgba(255, 255, 255, .1) !important;
+        background-color: #181818;
+    }
+    .jstree .jstree-hovered {
+        border: 1px solid rgba(255, 255, 255, .1) !important;
+        background-color: #111;
+    }
+    .jstree.file-tree > ul a {
+        border: 1px solid transparent;
+    }
+    .jstree a > ins {
+        vertical-align: top;
+    }
+
+    /* Syntax highlighting */
+    /* e.g., the word "import" in Java import statements
+    the style is copied from ".pl-k" on Github */
+    .cm-s-stash-default .cm-bracket,
+    .cm-s-stash-default .cm-keyword,
+    .cm-s-stash-default .cm-variable-3 {
+        color: #cf6a4c!important;
+    }
+
+    /* e.g., each of the package identifier in the Java import statements, method names, type parameters, etc.
+    the style is copied from ".pl-e, .pl-ef, .pl-en" on Github */
+    .cm-s-stash-default .cm-variable,
+    .cm-s-stash-default .cm-tag,
+    .cm-s-stash-default .cm-header {
+        color: #ac885b!important;
+    }
+
+    /* e.g., the "null" keyword in Java
+    the style is copied from ".pl-s" on Github */
+    .cm-s-stash-default .cm-string,
+    .cm-s-stash-default .cm-string-2,
+    .cm-s-stash-default .cm-atom,
+    .cm-s-stash-default .cm-quote {
+        color: #f9ee98!important;
+    }
+
+    /* e.g., annotations in Java
+    the style is copied from ".pl-stp, .pl-sv, .pl-v"  on Github */
+    .cm-s-stash-default .cm-meta {
+        color: #9b859d!important;
+    }
+
+    /* e.g., number literals
+    */
+    .cm-s-stash-default .cm-number {
+        color: #f9ee98!important;
+    }
+
+    /* e.g., Java primitives
+    the style is copied from ".pl-stp, .pl-sv, .pl-v" on Github */
+    .cm-s-stash-default .cm-attribute,
+    .cm-s-stash-default .cm-builtin,
+    .cm-s-stash-default .cm-def,
+    .cm-s-stash-default .cm-property,
+    .cm-s-stash-default .cm-qualifier,
+    .cm-s-stash-default .cm-link {
+        color: #9b859d!important;
+    }
+
+    /* whitespace characters */
+    .content-view.show-whitespace-characters .CodeMirror .cm-whitespace::after,
+    .content-view.show-whitespace-characters .CodeMirror .CodeMirror-code > div > pre > span::after {
+        color: #525252;
+    }
+
+
+    /* Make button for minimizing file browser actually usable */
+    .file-tree-container .diff-tree-toolbar .collapse-file-tree.aui-button,
+    .file-tree-container .diff-tree-toolbar .search-button-when-collapsed.aui-button {
+        margin-bottom: 3px;
+        width: 100%;
+        min-width: 30px;
+    }
+    .commit-files .collapse-file-tree-icon,
+    .pull-request-content > .commit-files .diff-tree-toolbar .aui-toolbar2-secondary {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+    .file-tree-container .diff-tree-toolbar .primary {
+        display: none;
+    }
+
+    /* Comemnt-related */
+    textarea {
+        background-color: #181818;
+    }
+    .markup-editor textarea,
+    .markup-editor .markup-toolbar {
+        border: 1px solid #525252;
+        color: #ccc;
+    }
+
+    .markup-preview {
+        background: #202020;
+        border: 1px solid #525252;
+    }
+
+    .comment-container .panel {
+        background: #181818;
+        border: 1px solid #525252;
+    }
+
+    .comment-box {
+        color: #ccc;
+    }
+    .comment-container .comment {
+        border-top: 1px solid #525252;
+    }
+
+    .markup code {
+        background: #222;
+        border: 1px solid rgba(255, 255, 255, .1) !important;
+        padding: .2em .4em
+    }
+
+    /* make segment connector darker */
+    .side-by-side-diff .segment-connector-column path {
+        fill: #775500;
+        stroke: #775500;
+    }
+    .side-by-side-diff .segment-connector.added:not(.removed) {
+        fill: #775500;
+        stroke: #775500;
+    }
+    .side-by-side-diff .segment-connector.removed:not(.added) {
+        fill: #775500;
+        stroke: #775500;
+    }
+
+    /* Make file toolbar thinner */
+    .file-toolbar {
+        padding: 0 20px;
+    }
+    .file-tree-container .diff-tree-toolbar .primary,
+    .file-tree-container .diff-tree-toolbar .secondary {
+        margin: 0 0;
+    }
+    .file-tree-container .commit-selector-button {
+        height: 30px;
+        padding: 0 20px 2px 10px;
+    }
+
+    /* Unified view code background */
+    .unified-diff .CodeMirror-scroll {
+        background: #202020;
+    }
+
+    /* Unified view gutter border */
+    .unified-diff .gutter-border {
+        border-right: 0;
+    }
+
+
+    /* Padding around the entire page */
+    .aui-page-panel-nav,
+    .aui-page-panel-content,
+    .aui-page-panel-item,
+    .aui-page-panel-sidebar,
+    .aui-tabs.horizontal-tabs > .tabs-pane {
+        padding: 0;
+    }
+
+    /* Make useless side bar slightly narrower */
+    .aui-sidebar[aria-expanded="false"] .aui-sidebar-wrapper {
+        width: 38px;
+    }
+    .aui-sidebar[aria-expanded="false"] .aui-sidebar-group {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Make useless side bar darker */
+    .aui-sidebar .aui-sidebar-wrapper {
+        background-color: #182030;
+        border-right: 1px solid #246;
+    }
+
+    /* Make file tree thinner and dark and no animantion */
+    .file-tree-container {
+        transition: none;
+        width: 300px;
+    }
+    .file-tree-wrapper .file-tree {
+        transition: none;
+    }
+    .commit-files.collapsed .file-tree-container {
+        width: 40px;
+    }
+    .pull-request-content > .commit-files .diff-tree-toolbar h4 {
+        transition: none;
+        width: 230px;
+    }
+    .file-tree-container .commit-selector-button {
+        width: 280px;
+    }
+    .commit-files .collapse-file-tree-icon,
+    .pull-request-content > .commit-files .diff-tree-toolbar .aui-toolbar2-secondary {
+        transition: none;
+    }
+
+    /* Remove search bar and "file" header in file tree */
+    form.aui.search {
+        display: none;
+    }
+    .file-tree-header {
+        display: none;
+    }
+
+    /* Color of caret icons on file tree */
+    .jstree ins {
+        color: #5E6C84;
+    }
+
+    /* Make file tree default font color to be white-ish */
+    .jstree.file-tree > ul a {
+        color: #ccc;
+    }
+
+    /* Make color of word-diff less bright */
+    .added.line .ediff-add,
+    .added.line .ediff-change {
+        background-color: #252;
+    }
+    .removed.line .ediff-change,
+    .removed.line .ediff-delete {
+        background-color: #622;
+    }
+
+    /* Make source code hover color less bright */
+    .diff-view.text-view.commentable .line:hover,
+    .diff-view.text-view.commentable .line:hover .CodeMirror-gutter-elt > * {
+        background-color: #383838;
+    }
+
+    /* Make source code default font color to be dark theme friendly */
+    .cm-s-stash-default .cm-variable-2,
+    .cm-s-stash-default .cm-operator,
+    .cm-s-stash-default .cm-tag.cm-bracket,
+    .diff-view.text-view .cm-s-stash-default .expanded pre {
+        /* color: #ccc; */
+        color: #5E6C84
+    }
+    .CodeMirror pre {
+        /* color: #ccc; */
+        color: #5E6C84
+    }
+
+    /* Remove border color within source code area */
+    .diff-view.text-view .removed.line,
+    .diff-view.text-view .removed.segment-connector,
+    .diff-view.text-view .removed.line .comment-box,
+    .diff-view.text-view .removed.line .bitbucket-gutter-marker {
+        border-top-color: transparent;
+    }
+
+    /* Make source code area background dark */
+    .CodeMirror.cm-s-stash-default,
+    .text-view .line,
+    .text-view .line .CodeMirror-gutter-elt > *,
+    .diff-view.text-view .context.line .add-comment-trigger,
+    .side-by-side-diff > .segment-connector-column {
+        background: #141414;
+    }
+
+    /* Make borders around source code area dark */
+    .file-toolbar {
+        border-bottom: 1px solid #525252;
+    }
+    #commit-file-content {
+        border: 1px solid #525252;
+    }
+
+    /* Make removed / added text highlight dark */
+    .diff-view.text-view .removed.line,
+    .diff-view.text-view .removed.segment-connector,
+    .diff-view.text-view .removed.line .comment-box,
+    .diff-view.text-view .removed.line .bitbucket-gutter-marker {
+        background-color: #380000;
+    }
+    .add-comment-trigger.bitbucket-gutter-marker:not(.sonar-uncovered),
+    .diff-view.text-view .added.line,
+    .diff-view.text-view .added.segment-connector,
+    .diff-view.text-view .added.line .comment-box,
+    .diff-view.text-view .added.line .bitbucket-gutter-marker:not(.sonar-uncovered) {
+        background-color: #002800;
+    }
+
+    /* Edge case for uncovered sonarqube */
+    .sonar-uncovered {
+        background-color: red !important;
+    }
+    .sonar-covered {
+        background-color: green !important;
+    }
+
+
+    /* Remove white borders in source code area */
+    .side-by-side-diff > .side-by-side-diff-editor-to {
+        border-left: 0;
+    }
+    .side-by-side-diff-editor-from > .diff-hunk-map,
+    .side-by-side-diff > .side-by-side-diff-editor-from {
+        border-right: 0;
+    }
+    .side-by-side-diff-editor-to > .diff-hunk-map {
+        border-left: 0;
+    }
+    .CodeMirror {
+        border: 0;
+    }
+    .side-by-side-diff .line .CodeMirror-gutter-elt > *,
+    .side-by-side-diff .line,
+    .side-by-side-diff .CodeMirror-code > * {
+        border-top: 1px solid transparent;
+    }
+
+    /* Make source code scroll bar dark. !! Note that it also removes visual cue of code changes. */
+    .diff-hunk-map .viewport-indicator {
+        border: solid transparent;
+        background-color: #2b2b2b;
+    }
+    .diff-hunk-map > canvas {
+        display: none;
+    }
+
+    html {
+        --ghb-bg-img: url(data:image/png;base64,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)
+    }
+    .aui-page-panel {
+        background-image: var(--ghb-bg-img);
+        background-repeat: repeat;
+    }
+    .pull-request-header .reviewer-avatar-list {
+        background-image: var(--ghb-bg-img);
+        background-repeat: repeat;
+    }
+
+    /* Make scrollbars thinner and dark */
+    ::-webkit-scrollbar {
+        width: 8px;
+        /* width of the entire scrollbar */
+        height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background-color: #ccc;
+        border: 3px solid #202020
+    }
+    ::-webkit-scrollbar-track {
+        background: #202020;
+    }
+
+    /* Make some background element dark */
+    .pull-request-content > .commit-files .diff-tree-toolbar,
+    .file-tree-wrapper,
+    #commit-file-content,
+    .file-toolbar {
+        background: #202020;
+    }
+
+    /* Make borders around file tree dark */
+    .aui-button,
+    a.aui-button,
+    .aui-button:visited {
+        border-color: #525252;
+    }
+
+    /* Doesn't seem to be needed anymore */
+    .side-by-side-diff .modified.line + .context.line .bitbucket-gutter-marker,
+    .side-by-side-diff .context.line + .modified.line .bitbucket-gutter-marker,
+    .side-by-side-diff .context.line + .conflict-ours.line .bitbucket-gutter-marker,
+    .side-by-side-diff .conflict-ours.line + .context.line .bitbucket-gutter-marker,
+    .side-by-side-diff .commented.line + .context.line .bitbucket-gutter-marker,
+    .side-by-side-diff .context.line + .commented.line .bitbucket-gutter-marker,
+    .side-by-side-diff .paired-with-change .bitbucket-gutter-marker,
+    .diff-view.text-view .added.line,
+    .diff-view.text-view .added.segment-connector,
+    .diff-view.text-view .added.line .comment-box,
+    .diff-view.text-view .added.line .bitbucket-gutter-marker,
+    .side-by-side-diff .modified.line + .context.line,
+    .side-by-side-diff .context.line + .modified.line,
+    .side-by-side-diff .context.line + .conflict-ours.line,
+    .side-by-side-diff .conflict-ours.line + .context.line,
+    .side-by-side-diff .commented.line + .context.line,
+    .side-by-side-diff .context.line + .commented.line,
+    .side-by-side-diff .paired-with-change {
+        border-top: 1px solid transparent;
+    }
+    .diff-view.text-view .line-number,
+    .diff-view.text-view .line-number-marker {
+        color: rgba(220, 220, 220, .4);
+    }
+
+    /* Make disabled "Merge" button dark red */
+    .aui-button[disabled],
+    .aui-button[disabled]:hover,
+    .aui-button[disabled]:focus,
+    .aui-button[disabled]:active,
+    .aui-button[aria-disabled="true"],
+    .aui-button[aria-disabled="true"]:hover,
+    .aui-button[aria-disabled="true"]:focus,
+    .aui-button[aria-disabled="true"]:active,
+    .aui-button[aria-disabled="true"][aria-pressed] {
+        background: #380000;
+        border-color: #420a0a;
+        border-color: #525252;
+    }
+}
