@@ -1,0 +1,24 @@
+/* ==UserStyle==
+@name         Better Bitbucket (Show After State Only)
+@version      0.0.2
+@description  Less sucky version of Bitbucket Server (shows only the after state; i.e., right side of the dual pane view)
+@namespace    github.com/YongJieYongJie/betterbitbucket
+@author       YongJieYongJie
+@homepageURL  https://github.com/YongJieYongJie/betterbitbucket
+@supportURL   https://github.com/YongJieYongJie/betterbitbucket/issues
+@updateURL    https://github.com/YongJieYongJie/betterbitbucket/raw/master/betterbitbucket-after.user.css
+@license      MIT
+==/UserStyle== */
+@-moz-document regexp("https://bitbucket.\\w+.co/.+/pull-requests/.*/diff.*") {
+    .diff-editor.side-by-side-diff-editor-from {
+        display: none;
+    }
+
+    .segment-connector-column {
+        display: none !important;
+    }
+
+    .diff-editor.side-by-side-diff-editor-to {
+        width: 100%;
+    }
+}
