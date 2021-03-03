@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Better Bitbucket
-@version      0.0.2
+@version      0.0.3
 @description  Less sucky version of Bitbucket Server
 @namespace    github.com/YongJieYongJie/betterbitbucket
 @author       YongJieYongJie
@@ -9,7 +9,219 @@
 @updateURL    https://github.com/YongJieYongJie/betterbitbucket/raw/master/betterbitbucket.user.css
 @license      MIT
 ==/UserStyle== */
-@-moz-document regexp("https://bitbucket.\\w+.co/.+/pull-requests/.*") {
+@-moz-document regexp("https://bitbucket.\\w+.com?/.+/pull-requests/.*"),
+regexp("https://bitbucket.\\w+.com?/.+/compare/.*"),
+regexp("https://bitbucket.\\w+.com?/.+/pull-request.*") {
+
+    :root {
+
+        /* Colors */
+        --green-dark: #002800;
+        --green-2: #252;
+
+        --blue-1: #172b4d;
+        --blue-2: #182030;
+        --blue-3: #246;
+        --blue-4: #4f8cc9;
+        --blue-5: #5E6C84;
+        --blue-6: #c9d1d9;
+
+        --black-1: #111;
+        --black-2: #141414;
+        --black-3: #181818;
+        --black-4: #202020;
+        --black-5: #222;
+        --black-6: #2b2b2b;
+        --black-7: #343434;
+        --black-8: #383838;
+        --black-12: #484848;
+        --black-9: #525252;
+        --black-10: #9b9b9b;
+        --black-11: #afafaf;
+
+        --red-1: #380000;
+        --red-2: #420a0a;
+        --red-3: #622;
+        --red-4: #cf6a4c;
+
+        --white-1: #ccc;
+        --white-2: #fff;
+        --white-3: #c6c6c6;
+
+        --yellow-1: #775500;
+        --yellow-2: #ac885b;
+        --yellow-3: #f9ee98;
+        --yellow-4: #e3b341;
+        --yellow-5: #f2d35b66;
+
+        --purple-1: #9b859d;
+
+        /* Semantic Applications */
+        --background-primary: var(--black-4);
+        --background-contrast-dark: var(--black-2);
+        --background-contrast-light: var(--black-5);
+
+        --btn-background-primary: var(--black-3);
+        --btn-border-primary: var(--black-7);
+        --btn-background-hover: var(--black-5);
+        --btn-border-hover: var(--black-12);
+        --btn-color-primary: var(--white-3);
+
+        --warning-primary: var(--yellow-4);
+        --warning-border: var(--yellow-5);
+
+        --border-primary: var(--black-9);
+
+        --font-primary: var(--white-1);
+        --font-contrast-faded: var(--black-11);
+        --font-contrast-focused: var(--blue-6);
+
+        --accent: var(--blue-4);
+    }
+    .diff-view.text-view .line.conflict-marker,
+    .diff-view.text-view .segment-connector.conflict-marker,
+    .side-by-side-diff .conflict-ours.line + .conflict-marker.line .add-comment-trigger,
+    .side-by-side-diff .conflict-ours.line + .conflict-marker.line .dummy-comment-trigger,
+    .side-by-side-diff .conflict-ours.line + .conflict-marker.line .line-number,
+    .side-by-side-diff .conflict-ours.line + .conflict-marker.line .line-number-marker,
+    .diff-view.text-view .line.conflict-marker .bitbucket-gutter-marker,
+    .diff-view.text-view .segment-connector.conflict-marker .bitbucket-gutter-marker,
+    .diff-view.text-view .line.conflict-marker .comment-box,
+    .diff-view.text-view .segment-connector.conflict-marker .comment-box,
+    .diff-view.text-view .line.conflict-marker > code.source > span,
+    .diff-view.text-view .segment-connector.conflict-marker > code.source > span {
+        background-color: var(--blue-1) !important;
+    }
+    .side-by-side-diff .conflict-marker.line + .conflict-ours.line,
+    .diff-view.text-view .line.conflict-ours .bitbucket-gutter-marker,
+    .diff-view.text-view .segment-connector.conflict-ours .bitbucket-gutter-marker,
+    .diff-view.text-view .line.conflict-theirs .bitbucket-gutter-marker,
+    .diff-view.text-view .segment-connector.conflict-theirs .bitbucket-gutter-marker,
+    .diff-view.text-view .line.conflict-ours .comment-box,
+    .diff-view.text-view .segment-connector.conflict-ours .comment-box,
+    .diff-view.text-view .line.conflict-theirs .comment-box,
+    .diff-view.text-view .segment-connector.conflict-theirs .comment-box,
+    .diff-view.text-view .line.conflict-ours > code.source > span,
+    .diff-view.text-view .segment-connector.conflict-ours > code.source > span,
+    .diff-view.text-view .line.conflict-theirs > code.source > span,
+    .diff-view.text-view .segment-connector.conflict-theirs > code.source > span,
+    .diff-view.text-view .line.conflict-ours,
+    .diff-view.text-view .segment-connector.conflict-ours,
+    .diff-view.text-view .line.conflict-theirs,
+    .diff-view.text-view .segment-connector.conflict-theirs {
+        background-color: var(--blue-1);
+    }
+    .diff-view.text-view .conflict .bitbucket-gutter-marker,
+    .diff-view.text-view .conflict .comment-box,
+    .diff-view.text-view .conflict > code.source > span {
+        color: rgba(220, 220, 220, .4);
+    }
+
+    .aui-message.warning,
+    .aui-message-warning {
+        background-color: transparent;
+        color: var(--warning-primary);
+        border-color: var(--warning-border);
+    }
+
+    .diff-conflict-message-container {
+        background-color: var(--background-primary);
+    }
+
+    .comment-container .comment .actions a,
+    .comment-container .comment .actions span,
+    .comment-container .comment .actions button,
+    .comment-container .comment .info a,
+    .comment-container .comment .info span,
+    .comment-container .comment .info button,
+    .comment-container .comment .times,
+    .comment-container .comment time {
+        color: var(--accent);
+    }
+
+    .jira-issue-detailed .field .field-label {
+        color: var(--font-contrast-faded);
+    }
+
+    .jira-issue-detailed .preformatted,
+    .jira-issue-detailed .code {
+        background: var(--background-contrast-dark);
+        border-color: var(--border-primary)
+    }
+
+    .aui-buttons .aui-button:not(.aui-button-primary):not(.aui-button-link):focus,
+    .aui-buttons .aui-button:not(.aui-button-primary):not(.aui-button-link):hover,
+    .aui-buttons .aui-button:not(.aui-button-primary):not(.aui-button-link):active {
+        border-color: var(--btn-border-hover);
+        background: var(--btn-background-hover);
+    }
+
+    .aui-dialog,
+    .aui-dialog .dialog-page-body {
+        background: #202020;
+        border-color: #525252;
+    }
+    .aui-dialog .dialog-title,
+    .aui-dialog .dialog-button-panel {
+        border-color: #525252;
+    }
+    .aui-dialog h2.dialog-title {
+        color: #4f8cc9;
+    }
+    .aui-dialog .dialog-button-panel a.button-panel-link {
+        color: #4f8cc9;
+    }
+    .jira-issue-detailed .jira-section-heading > h3 {
+        background-color: #202020;
+    }
+
+    .pull-request-list .filter-bar {
+        background-image: var(--ghb-bg-img);
+        background-repeat: repeat;
+    }
+
+    .aui-message.hint,
+    .aui-message-hint,
+    .aui-message.info,
+    .aui-message-info {
+        background-color: #202020;
+        color: #ccc;
+        border-color: #525252;
+    }
+
+    form.aui .text,
+    form.aui .password,
+    form.aui .upfile,
+    form.aui .textarea,
+    form.aui .select,
+    form.aui .multi-select,
+    form.aui .aui-select2-container {
+        background-color: #181818;
+        color: #ccc;
+        border-color: #525252;
+
+        /*            
+    textarea {
+        background-color: #181818;
+    }
+    .markup-editor textarea,
+    .markup-editor .markup-toolbar {
+        border: 1px solid #525252;
+        color: #ccc;
+    } */
+    }
+    .aui-select2-container.select2-container-multi .select2-choices {
+        background-color: #181818;
+        color: #ccc;
+    }
+    form.aui .text,
+    form.aui .password,
+    form.aui .textarea,
+    form.aui .select,
+    form.aui .multi-select,
+    form.aui .aui-select2-container .select2-choices {
+        border-color: #525252;
+    }
 
     /* New - Commits Page */
     .commits-table .message::after {
@@ -179,7 +391,7 @@
     .aui-button-subtle.aui-button:hover,
     .aui-button:hover .aui-icon {
         color: #afafaf;
-        border-color: #525252;
+        border-color: var(--btn-border-hover);
     }
 
     /* New - Comments on non-modified lines */
@@ -466,8 +678,7 @@
         color: #5E6C84
     }
     .CodeMirror pre {
-        /* color: #ccc; */
-        color: #5E6C84
+        color: var(--font-contrast-faded);
     }
 
     /* Remove border color within source code area */
@@ -600,6 +811,8 @@
     a.aui-button,
     .aui-button:visited {
         border-color: #525252;
+        border-color: var(--btn-border-primary);
+        color: #c6c6c6
     }
 
     /* Doesn't seem to be needed anymore */
