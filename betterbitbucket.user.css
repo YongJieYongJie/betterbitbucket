@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Better Bitbucket
-@version      0.0.4
+@version      0.0.5
 @description  Less sucky version of Bitbucket Server
 @namespace    github.com/YongJieYongJie/betterbitbucket
 @author       YongJieYongJie
@@ -77,6 +77,25 @@ regexp("https://bitbucket.\\w+.com?/.+/pull-request.*") {
         --font-contrast-focused: var(--blue-6);
 
         --accent: var(--blue-4);
+        --accent-2: var(--yellow-1);
+    }
+
+    div.CodeMirror.cm-s-commit-message.CodeMirror-wrap {
+        background: var(--background-contrast-web);
+        border: 1px solid var(--border-primary);
+    }
+
+    .side-by-side-diff .paired-with-change {
+        border-top-color: var(--accent-2) !important;
+    }
+
+    .sonar-issue-panel {
+        background-color: var(--background-primary) !important;
+        border-color: var(--border-primary) !important;
+        color: var(--font-primary);
+    }
+    .aui-select2-container.select2-container .select2-choice:after {
+        border-top-color: var(--accent);
     }
 
     .aui-dropdown2.aui-style-default.aui-layer {
@@ -350,7 +369,7 @@ regexp("https://bitbucket.\\w+.com?/.+/pull-request.*") {
         color: #ccc;
         border-color: #525252;
 
-        /*            
+        /*
     textarea {
         background-color: #181818;
     }
@@ -702,16 +721,16 @@ regexp("https://bitbucket.\\w+.com?/.+/pull-request.*") {
 
     /* make segment connector darker */
     .side-by-side-diff .segment-connector-column path {
-        fill: #775500;
-        stroke: #775500;
+        fill: var(--accent-2);
+        stroke: none;
     }
     .side-by-side-diff .segment-connector.added:not(.removed) {
-        fill: #775500;
-        stroke: #775500;
+        fill: var(--accent-2);
+        stroke: none;
     }
     .side-by-side-diff .segment-connector.removed:not(.added) {
-        fill: #775500;
-        stroke: #775500;
+        fill: (--accent-2);
+        stroke: none;
     }
 
     /* Make file toolbar thinner */
